@@ -2,7 +2,7 @@
 
 ## Description
 
-[Provide the module number to which the project applies]
+Module 6 assignment
 
 ## Author
 
@@ -10,4 +10,4 @@ Kimi Sevilla
 
 ## Assignment
 
-[Indicate the name and description of the assignment the project is related to]
+create a class to manage mortgage data.
