@@ -35,5 +35,17 @@ class Mortgage:
     def __str__(self):
         return (f"Mortgage(Loan Amount: {self.__loan_amount}, Rate: {self.__rate.name}, "
                 f"Frequency: {self.__frequency.name}, Amortization: {self.__amortization})")
+    
+    # Accessor for Loan Amount
+    def get_loan_amount(self) -> float:
+        """Accessor method to return the loan amount."""
+        return self.__loan_amount
+
+    # Mutator for Loan Amount
+    def set_loan_amount(self, loan_amount: float):
+        """Mutator method to set the loan amount with validation."""
+        if loan_amount <= 0:
+            raise ValueError("Loan Amount must be positive.")
+        self.__loan_amount = loan_amount
 
 

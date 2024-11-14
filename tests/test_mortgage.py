@@ -49,7 +49,31 @@ class MortgageTests(TestCase):
         self.assertEqual(mortgage._Mortgage__frequency, PaymentFrequency.MONTHLY)
         self.assertEqual(mortgage._Mortgage__amortization, 30)
 
-# This code can be executed to run the tests
+    def test_loan_amount_accessor(self):
+        """Test that the accessor method returns the correct loan amount."""
+        mortgage = Mortgage(250000, "FIXED_5", "MONTHLY", 30)
+        self.assertEqual(mortgage.get_loan_amount(), 250000)
+
+    def test_loan_amount_mutator_invalid_negative(self):
+        """Test that the mutator raises ValueError for negative loan amount."""
+        mortgage = Mortgage(250000, "FIXED_5", "MONTHLY", 30)
+        with self.assertRaises(ValueError) as context:
+            mortgage.set_loan_amount(-50000)
+        self.assertEqual(str(context.exception), "Loan Amount must be positive.")
+
+    def test_loan_amount_mutator_invalid_zero(self):
+        """Test that the mutator raises ValueError for zero loan amount."""
+        mortgage = Mortgage(250000, "FIXED_5", "MONTHLY", 30)
+        with self.assertRaises(ValueError) as context:
+            mortgage.set_loan_amount(0)
+        self.assertEqual(str(context.exception), "Loan Amount must be positive.")
+
+    def test_loan_amount_mutator_valid_positive(self):
+        """Test that the mutator correctly sets a valid positive loan amount."""
+        mortgage = Mortgage(250000, "FIXED_5", "MONTHLY", 30)
+        mortgage.set_loan_amount(300000)
+        self.assertEqual(mortgage.get_loan_amount(), 300000)
+
 if __name__ == "__main__":
     import unittest
     unittest.main()
